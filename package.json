@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "tests": "jest --watchAll"
   },
   "dependencies": {
     "@types/node": "20.3.0",
@@ -16,6 +17,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
+    "iconv-lite": "^0.6.3",
     "next": "13.4.5",
     "postcss": "8.4.24",
     "react": "18.2.0",
