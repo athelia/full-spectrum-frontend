@@ -4,7 +4,7 @@
 git clone git@github.com:athelia/full-spectrum-frontend.git
 ```
 
-2. Navigate to directory and install packages
+2. Navigate to directory
 ```bash
 cd full-spectrum-frontend
 ```
@@ -15,7 +15,7 @@ node -v
 nvm use 18.16
 ```
 
-4. Navigate to directory and install packages
+4. Install packages
 ```bash
 npm install
 ```
