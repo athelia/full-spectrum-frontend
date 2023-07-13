@@ -24,17 +24,9 @@ npm install
 ```bash
 npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) in your browser
 
-6. Run tests
-
-run a singular test file
+6. Open Cypress to run e2e or component tests
 ```bash
-npm run test FILENAME
-```
-
-run all tests files
-```bash
-npm run tests
+npx cypress open
 ```
