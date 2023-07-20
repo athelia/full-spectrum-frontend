@@ -48,3 +48,7 @@ nav a:hover {
 main {
   padding-top: 60px;
 }
+
+.gallery-container {
+  max-width: 90vh;
+}
