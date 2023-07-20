@@ -23,16 +23,22 @@ describe('Gallery page', () => {
   })
 
   it('should view images on navigation button clicks', () => {
-    cy.get('[data-test=nav-next]')
-      .click().click().click().click().click()
+    const clickEvents = (element: Cypress.Chainable<JQuery<HTMLElement>>, count: number) => {
+      for ( let i = 0; i < count; i++ ) {
+        element.click()
+      }
+    }
+
+    const nextButton = cy.get('[data-test=nav-next]')
+    clickEvents(nextButton, 5)
 
     cy.get('[data-test=gallery-viewer-wrap]')
       .find('[data-test=carousel-item-5]')
       .as('fourthIndexImage')
       .should('be.visible')
 
-    cy.get('[data-test=nav-prev]')
-      .click().click().click().click().click()
+    const previousButton = cy.get('[data-test=nav-prev]')
+    clickEvents(previousButton, 5)
 
     cy.get('[data-test=gallery-viewer-wrap]')
       .find('[data-test=carousel-item-0]')
