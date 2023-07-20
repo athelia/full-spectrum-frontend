@@ -46,3 +46,5 @@ describe('Gallery page', () => {
       .should('be.visible')
   })
 })
+
+export {}
