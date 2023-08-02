@@ -10,15 +10,15 @@ describe('Header component', () => {
   it('renders Home link', () => {
     cy.mount(<Header />)
     cy.get('a')
-      .contains('Home')
+      .contains('Full Spectrum Eggs')
       .should('have.attr', 'href', '/')
   })
 
-  it('renders Order Eggs Link', () => {
+  it('renders Order Link', () => {
     cy.mount(<Header />)
     cy.get('a')
-      .contains('Order Eggs')
-      .should('have.attr', 'href', '/order-eggs')
+      .contains('Order')
+      .should('have.attr', 'href', '/order')
   })
 
 })
