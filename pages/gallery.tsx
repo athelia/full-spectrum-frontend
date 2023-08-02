@@ -14,7 +14,7 @@ const Gallery = () => {
   }, [])
   return (
     <div className="gallery">
-      <div className="m-auto gallery-container">
+      <div className="gallery-container">
         <div id="image-gallery"></div>
       </div>
     </div>
