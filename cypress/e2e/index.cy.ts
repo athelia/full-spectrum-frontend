@@ -10,13 +10,11 @@ describe('Home page', () => {
     cy.get('[aria-controls=responsive-navbar-nav]')
       .as('toggleButton')
 
-    // laptop screen width
-    cy.viewport(1600, 1000)
+    cy.viewport('macbook-16')
     cy.get('@navLinks')
       .should('be.visible')
 
-    // mobile screen width
-    cy.viewport(390, 844)
+    cy.viewport('iphone-xr')
     cy.get('@navLinks')
       .should('not.be.visible')
     cy.get('@toggleButton')
