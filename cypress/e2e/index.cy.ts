@@ -1,9 +1,6 @@
 describe('Home page', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000')
-  })
-
   it('should collapse nav on smaller screen size', () => {
+    cy.visit('/')
     cy.get('[id=responsive-navbar-nav]')
       .as('navLinks')
 
