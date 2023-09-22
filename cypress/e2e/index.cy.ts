@@ -1,22 +1,16 @@
 describe('Home page', () => {
   it('should collapse nav on smaller screen size', () => {
     cy.visit('/')
-    cy.get('[id=responsive-navbar-nav]')
-      .as('navLinks')
+    cy.get('#responsive-navbar-nav').as('navLinks')
 
-    cy.get('[aria-controls=responsive-navbar-nav]')
-      .as('toggleButton')
-
-    cy.viewport('macbook-16')
-    cy.get('@navLinks')
+    cy.viewport('macbook-16').get('@navLinks')
       .should('be.visible')
+      .and('contain', 'Order')
 
-    cy.viewport('iphone-xr')
-    cy.get('@navLinks')
+    cy.viewport('iphone-xr').get('@navLinks')
       .should('not.be.visible')
-    cy.get('@toggleButton')
-      .click()
-    cy.get('@navLinks')
+    cy.get('button[aria-label="Toggle navigation"]').click().get('@navLinks')
       .should('be.visible')
+      .and('contain', 'Order')
   })
 })

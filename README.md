@@ -30,3 +30,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser
 ```bash
 npx cypress open
 ```
+alternatively run in the terminal
+```bash
+npx cypress run --e2e
+```
+```bash
+npx cypress run --component
+```
