@@ -9,11 +9,13 @@ export const getStaticProps: GetStaticProps = async () => {
       if (res.ok) {
         return res.json()
       } else {
-        alert('something went wrong.')
         throw res
       }
     })
- 
+    .catch((err) => {
+      console.log(err)
+    })
+
   return { props: { recipes } }
 }
 

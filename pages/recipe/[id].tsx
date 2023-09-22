@@ -71,13 +71,15 @@ const Recipe = (props: Props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const recipes = await fetch(`http://${getHostname()}/api/recipes`)
     .then((res) => {
-    if (res.ok) {
-      return res.json()
-    } else {
-      alert("something went wrong.")
-      throw res
-    }
-  })
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw res
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 
   const paths = recipes.map((recipe: Props) => ({
     params: { id: recipe.id },
@@ -87,16 +89,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const recipe = await fetch(
-    `http://${getHostname()}/api/recipe/${params?.id}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json()
-    } else {
-      alert("something went wrong.")
-      throw res
-    }
-  })
+  const recipe = await fetch(`http://${getHostname()}/api/recipe/${params?.id}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw res
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 
   return { props: recipe }
 }
