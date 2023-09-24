@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
-import { Props as RecipeProps } from './recipe/[id]'
-import { getHostname } from '@/utilities'
+import { Props as RecipeProps } from './recipe/[recipeSlug]/[id]'
+import { getHostname, stringToSlug } from '@/utilities'
 
 export const getStaticProps: GetStaticProps = async () => {
   const recipes = await fetch(`http://${getHostname()}/api/recipes`)
@@ -26,14 +26,17 @@ type Props = {
 const Recipes = ( props: Props ) => {
   const { recipes } = props
 
-  const recipeLinks = recipes.map((recipe: RecipeProps) => (
-    <Link 
-      key={recipe.name}
-      href={`/recipe/${encodeURIComponent(recipe.id)}`}
-    >
-      {recipe.name}
-    </Link>)
-  )
+  const recipeLinks = recipes.map((recipe: RecipeProps) => {
+    const recipeSlug = stringToSlug(recipe.name)
+    return (
+      <Link 
+        key={recipe.name}
+        href={`/recipe/${recipeSlug}/${encodeURIComponent(recipe.id)}`}
+      >
+        {recipe.name}
+      </Link>
+    )
+  })
 
   return (
     <>

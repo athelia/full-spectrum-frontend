@@ -8,3 +8,9 @@ export const getHostname = () => {
   }
   return hostname
 }
+
+export const stringToSlug = (text: String) => {
+  return text.toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/[^\w-]+/g, "")
+}

@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import Card from "react-bootstrap/Card"
-import { getHostname } from "@/utilities"
+import { getHostname, stringToSlug } from "@/utilities"
 
 export type Props = {
   created_at: string
@@ -81,9 +81,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
       console.log(err)
     })
 
-  const paths = recipes.map((recipe: Props) => ({
-    params: { id: recipe.id },
-  }))
+  const paths = recipes.map((recipe: Props) => {
+    const recipeSlug = stringToSlug(recipe.name)
+    return { params: { recipeSlug: recipeSlug, id: recipe.id }}
+  })
 
   return { paths, fallback: false }
 }
