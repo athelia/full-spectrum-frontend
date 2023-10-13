@@ -1,4 +1,17 @@
+.main {
+  padding: 1rem;
+}
+
 .gallery-container {
   margin: auto;
   max-width: 85vh;
+}
+
+.instructions {
+  white-space: pre-wrap;
+}
+
+.card {
+  max-width: 40rem;
+  margin: 0 auto;
 }

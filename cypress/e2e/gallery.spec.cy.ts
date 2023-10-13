@@ -1,6 +1,6 @@
 describe('Gallery page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/gallery')
+    cy.visit('/gallery')
   })
 
   it('should view image on thumbnail click', () => {
@@ -46,5 +46,3 @@ describe('Gallery page', () => {
       .should('be.visible')
   })
 })
-
-export {}
