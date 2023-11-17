@@ -1,20 +1,11 @@
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { Props as RecipeProps } from './recipe/[recipeSlug]/[id]'
-import { getHostname, stringToSlug } from '@/utilities'
+import { stringToSlug } from '@/utilities'
+import { loadRecipes } from '../lib/load-recipes'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const recipes = await fetch(`http://${getHostname()}/api/recipes`)
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        throw res
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  const recipes = await loadRecipes()
 
   return { props: { recipes } }
 }
