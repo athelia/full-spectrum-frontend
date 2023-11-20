@@ -1,6 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 import Card from "react-bootstrap/Card"
-import { getHostname, stringToSlug } from "@/utilities"
+import { loadRecipes } from '../../../lib/load-recipes'
+import { loadRecipe } from '../../../lib/load-recipe'
+import { stringToSlug } from "@/utilities"
 import ExternalLinkSvg from "@/components/ExternalLinkSvg"
 
 export type Props = {
@@ -55,17 +57,7 @@ const Recipe = (props: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const recipes = await fetch(`http://${getHostname()}/api/recipes`)
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        throw res
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  const recipes = await loadRecipes()
 
   const paths = recipes.map((recipe: Props) => {
     const recipeSlug = stringToSlug(recipe.name)
@@ -76,17 +68,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const recipe = await fetch(`http://${getHostname()}/api/recipe/${params?.id}`)
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        throw res
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  const recipe = await loadRecipe(params?.id)
 
   return { props: recipe }
 }
