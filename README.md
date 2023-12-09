@@ -37,3 +37,17 @@ npx cypress run --e2e
 ```bash
 npx cypress run --component
 ```
+
+7. Return test coverage report 
+- view report summary in the terminal 
+```bash
+npx nyc report --reporter=text-summary
+```
+- view report in the terminal
+```bash
+npx nyc report
+```
+- view report in the browser
+```bash
+open coverage/lcov-report/index.html
+```
